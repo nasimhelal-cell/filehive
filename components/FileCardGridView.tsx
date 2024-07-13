@@ -1,18 +1,16 @@
+"use client";
+import ArticleIcon from "@mui/icons-material/Article";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
 import { red } from "@mui/material/colors";
-import * as React from "react";
-import ArticleIcon from "@mui/icons-material/Article";
 import Image from "next/image";
-import { auth } from "@/auth";
-import { Grid } from "@mui/material";
 
-export default async function FileCard() {
-  const session = await auth();
+export default function FileCardGridView() {
   return (
     <Grid item>
       <Card sx={{ maxWidth: 350, backgroundColor: "#F8FAFD" }} elevation={4}>
@@ -32,7 +30,7 @@ export default async function FileCard() {
           component="img"
           height="150"
           image="/static/images/cards/paella.jpg"
-          alt="Paella dish"
+          alt="file content"
         />
 
         <CardHeader
@@ -47,12 +45,7 @@ export default async function FileCard() {
               }}
               aria-label="recipe"
             >
-              <Image
-                src={session?.user?.image || ""}
-                alt={session?.user?.name || ""}
-                width={25}
-                height={25}
-              />
+              N
             </Avatar>
           }
           subheader="creator name"

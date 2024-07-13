@@ -21,26 +21,7 @@ const Layout = ({ children }: Type_ChildrenElement) => {
         </Box>
 
         {/* Section 3 */}
-        <Box
-          flex="1 1 auto"
-          px={3}
-          py={2}
-          sx={{ backgroundColor: "#ffffff" }}
-          borderRadius={3}
-        >
-          <Box pb={2}>
-            <Typography variant="h5" color="initial" gutterBottom>
-              Welcome to FileHive
-            </Typography>
-            <Box display={"flex"} justifyContent={"space-between"}>
-              <FileFolder />
-              <GridList />
-            </Box>
-          </Box>
-          <Box sx={{ overflowY: "hidden", overflowX: "hidden" }}>
-            {children}
-          </Box>
-        </Box>
+        {children}
       </Box>
     </Box>
   );

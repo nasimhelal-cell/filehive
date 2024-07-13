@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import { Box, Grid, Stack, Toolbar } from "@mui/material";
 import FileFolder from "./FileFolder";
 import GridList from "./GridList";
-import FileCard from "./FileCard";
+import FileCard from "./FileCardGridView";
 
 const DashboardContent = () => {
   return (

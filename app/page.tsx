@@ -1,5 +1,6 @@
 import HomeContent from "@/components/HomeContent";
 import HomeNavbar from "@/components/HomeNavbar";
+
 import { Box } from "@mui/material";
 
 const Homepage = () => {

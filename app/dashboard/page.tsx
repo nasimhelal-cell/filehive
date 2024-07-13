@@ -1,32 +1,89 @@
-import { auth } from "@/auth";
+"use client";
+import { useSession } from "next-auth/react";
+import FileFolder from "@/components/FileFolder";
+import GridList from "@/components/GridList";
 import GridViewFolder from "@/components/GridViewFolder";
 import ListViewFolder from "@/components/ListViewFolder";
-import { actionGridListView } from "@/globalActions";
 import { Box, Grid, Typography } from "@mui/material";
 import { redirect } from "next/navigation";
-import { getCookie } from "cookies-next";
+import { useState } from "react";
+import FileCardGridView from "@/components/FileCardGridView";
+import FileCardListView from "@/components/FileCardListView";
 
-const DashboardPage = async () => {
-  const session = await auth();
+const DashboardPage = () => {
+  const session = useSession();
   if (!session) redirect("/");
-  let gridList = getCookie("gridList");
-  console.log("gridList", gridList);
+  const [gridView, setGridView] = useState("grid");
+  const [fileView, setFileView] = useState("files");
+  console.log("fileView", fileView);
   return (
-    <Box>
-      <Grid container spacing={3}>
-        {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-          <Grid item xs={3} key={index + "55"}>
-            <GridViewFolder />
-          </Grid>
-        ))}
-      </Grid>
-      <Grid container spacing={1}>
-        {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-          <Grid item xs={12} key={index + "5u"}>
-            <ListViewFolder />
-          </Grid>
-        ))}
-      </Grid>
+    <Box
+      flex="1 1 auto"
+      px={3}
+      py={2}
+      sx={{ backgroundColor: "#ffffff" }}
+      borderRadius={3}
+    >
+      <Box pb={2}>
+        <Typography variant="h5" color="initial" gutterBottom>
+          Welcome to FileHive
+        </Typography>
+        <Box display={"flex"} justifyContent={"space-between"}>
+          <FileFolder setFileView={setFileView} />
+          <GridList setGridView={setGridView} />
+        </Box>
+      </Box>
+
+      {/* folders */}
+      <Box>
+        {fileView === "folders" && (
+          <>
+            {gridView === "grid" && (
+              <Grid container spacing={3} marginBottom={3}>
+                {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+                  <Grid item xs={3} key={index + "55"}>
+                    <GridViewFolder />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+            {gridView === "list" && (
+              <Grid container spacing={1}>
+                {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+                  <Grid item xs={12} key={index + "5u"}>
+                    <ListViewFolder />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+          </>
+        )}
+
+        {/* files */}
+
+        {fileView === "files" && (
+          <>
+            {gridView === "grid" && (
+              <Grid container spacing={3} marginBottom={3}>
+                {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+                  <Grid item xs={3} key={index + "55"}>
+                    <FileCardGridView />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+            {gridView === "list" && (
+              <Grid container spacing={1}>
+                {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+                  <Grid item xs={12} key={index + "5u"}>
+                    <FileCardListView />
+                  </Grid>
+                ))}
+              </Grid>
+            )}
+          </>
+        )}
+      </Box>
     </Box>
   );
 };

@@ -7,7 +7,11 @@ import FileIcon from "@mui/icons-material/InsertDriveFile";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import React, { useState } from "react";
 
-const FileFolder: React.FC = () => {
+interface FileFolderProps {
+  setFileView: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const FileFolder: React.FC<FileFolderProps> = ({ setFileView }) => {
   const [view, setView] = useState("files");
 
   const handleViewChange = (
@@ -16,6 +20,7 @@ const FileFolder: React.FC = () => {
   ) => {
     if (newView !== null) {
       setView(newView);
+      setFileView(newView);
     }
   };
 
