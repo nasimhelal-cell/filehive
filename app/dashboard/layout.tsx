@@ -1,11 +1,7 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import { Type_ChildrenElement } from "@/types";
 import MainNavbar from "@/components/MainNavbar";
 import Sidebar from "@/components/Sidebar";
-import FileFolder from "@/components/FileFolder";
-import GridList from "@/components/GridList";
-import Typography from "@mui/material/Typography";
+import { Type_ChildrenElement } from "@/types";
+import Box from "@mui/material/Box";
 
 const Layout = ({ children }: Type_ChildrenElement) => {
   return (
