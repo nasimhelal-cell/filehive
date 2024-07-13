@@ -13,8 +13,10 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import AddIcon from "@mui/icons-material/Add";
 
 const DashboardPage = () => {
-  const session = useSession();
+  const { data: session } = useSession();
+
   if (!session) redirect("/");
+
   const [gridView, setGridView] = useState("grid");
   const [fileView, setFileView] = useState("files");
 
