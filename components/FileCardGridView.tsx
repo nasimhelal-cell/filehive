@@ -8,7 +8,6 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
 import { red } from "@mui/material/colors";
-import Image from "next/image";
 
 export default function FileCardGridView() {
   return (
