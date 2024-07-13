@@ -14,8 +14,8 @@ import AddIcon from "@mui/icons-material/Add";
 
 const DashboardPage = () => {
   const { data: session } = useSession();
-
-  if (!session) redirect("/");
+  console.log("session", session);
+  // if (!session) redirect("/");
 
   const [gridView, setGridView] = useState("grid");
   const [fileView, setFileView] = useState("files");
